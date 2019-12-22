@@ -16,6 +16,8 @@ namespace CustomerMNG.Repositories
 
         public List<Product> GetAllProduct()
         {
+            Products.Add(new Product { Name="Car", Price = 9999, Quantity = 3});
+            Products.Add(new Product { Name = "Computer", Price = 1000, Quantity = 5 });
             return Products;
         }
     }

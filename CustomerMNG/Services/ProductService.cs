@@ -30,6 +30,7 @@ namespace CustomerMNG.Services
                 {
                     Id = product.Id,
                     Name = product.Name,
+                    Price = product.Price,
                     Quantity = product.Quantity,
                     TotalPrice = CaculateTotalPrice(product),
                 });
