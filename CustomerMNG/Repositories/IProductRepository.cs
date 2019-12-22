@@ -12,5 +12,9 @@ namespace CustomerMNG.Repositories
 
         List<Product> GetAllProduct();
 
+        Product GetProduct(Guid id);
+
+        void SaveProduct(Product product);
+
     }
 }

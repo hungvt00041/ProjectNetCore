@@ -9,11 +9,13 @@ namespace CustomerMNG.Services
 {
     public interface IProductService
     {
-         void AddProduct(Product product);
+         void AddProduct(ProductViewModel product);
 
          List<ProductViewModel> GetAllProduct();
 
          double CaculateTotalPrice(Product product);
+        ProductViewModel GetProduct(Guid id);
 
+        void SaveProduct(ProductViewModel product);
     }
 }

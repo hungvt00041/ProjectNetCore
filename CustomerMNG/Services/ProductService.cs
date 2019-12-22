@@ -15,9 +15,10 @@ namespace CustomerMNG.Services
         {
             _repo = repo;
         }
-        public void AddProduct(Product product)
+        public void AddProduct(ProductViewModel product)
         {
-            _repo.AddProduct(product);
+            Product productModel = new Product { Id = product.Id, Name = product.Name, Quantity = product.Quantity, Price = product.Price };
+            _repo.AddProduct(productModel);
         }
 
         public List<ProductViewModel> GetAllProduct()
@@ -40,6 +41,24 @@ namespace CustomerMNG.Services
         public double CaculateTotalPrice(Product product)
         {
             return product.Quantity * product.Price;
+        }
+
+        public ProductViewModel GetProduct(Guid id)
+        {
+            var product = _repo.GetProduct(id);
+            return new ProductViewModel
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Price = product.Price,
+                Quantity = product.Quantity,
+                TotalPrice = CaculateTotalPrice(product),
+            };
+        }
+
+        public void SaveProduct(ProductViewModel product) {
+            Product productModel = new Product { Id = product.Id, Name = product.Name, Quantity = product.Quantity, Price = product.Price };
+            _repo.SaveProduct(productModel);
         }
     }
 }
