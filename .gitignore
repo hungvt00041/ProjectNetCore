@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/CustomerMNG/.vs/CustomerMNG
+/CustomerMNG/bin/Debug/netcoreapp3.1
+/CustomerMNG/obj
