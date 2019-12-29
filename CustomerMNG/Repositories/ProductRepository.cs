@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CustomerMNG.Data;
 using CustomerMNG.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CustomerMNG.Repositories
 {
@@ -30,7 +31,7 @@ namespace CustomerMNG.Repositories
         {
             //Products.Add(new Product { Name="Car", Price = 9999, Quantity = 3});
             //Products.Add(new Product { Name = "Computer", Price = 1000, Quantity = 5 });
-                    try { return _context.Products.ToList(); }
+                    try { return _context.Products.Include(x => x.Category).ToList(); }
                     catch(Exception e) {
                 return null;
                     }
@@ -38,7 +39,7 @@ namespace CustomerMNG.Repositories
 
         public Product GetProduct(Guid id)
         {
-            return _context.Products.FirstOrDefault(x => x.Id == id);
+            return _context.Products.Include(x=>x.Category).FirstOrDefault(x => x.Id == id);
         }
 
         public void SaveProduct(Product product)
@@ -48,6 +49,7 @@ namespace CustomerMNG.Repositories
             item.Name = product.Name;
             item.Quantity = product.Quantity;
             item.Price = product.Price;
+            item.CategoryId = product.CategoryId;
             _context.SaveChanges();
         }
     }

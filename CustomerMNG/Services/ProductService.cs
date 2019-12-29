@@ -17,7 +17,7 @@ namespace CustomerMNG.Services
         }
         public void AddProduct(ProductViewModel product)
         {
-            Product productModel = new Product { Id = product.Id, Name = product.Name, Quantity = product.Quantity, Price = product.Price };
+            Product productModel = new Product { Id = product.Id, Name = product.Name, Quantity = product.Quantity, Price = product.Price, CategoryId = product.CategoryId };
             _repo.AddProduct(productModel);
         }
 
@@ -33,8 +33,10 @@ namespace CustomerMNG.Services
                     Name = product.Name,
                     Price = product.Price,
                     Quantity = product.Quantity,
+                    CategoryId = product.CategoryId,
+                    Category = product.Category,
                     TotalPrice = CaculateTotalPrice(product),
-                });
+                }); ;
             }
             return viewModels;
         }
@@ -52,12 +54,14 @@ namespace CustomerMNG.Services
                 Name = product.Name,
                 Price = product.Price,
                 Quantity = product.Quantity,
+                Category = product.Category,
+                CategoryId = product.CategoryId,
                 TotalPrice = CaculateTotalPrice(product),
             };
         }
 
         public void SaveProduct(ProductViewModel product) {
-            Product productModel = new Product { Id = product.Id, Name = product.Name, Quantity = product.Quantity, Price = product.Price };
+            Product productModel = new Product { Id = product.Id, Name = product.Name, Quantity = product.Quantity, Price = product.Price, CategoryId = product.CategoryId };
             _repo.SaveProduct(productModel);
         }
     }

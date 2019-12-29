@@ -11,9 +11,11 @@ namespace CustomerMNG.Controllers
     public class ProductController : Controller
     {
         private readonly IProductService _service;
-        public ProductController(IProductService service)
+        private readonly ICategoryService _categoryservice;
+        public ProductController(IProductService service, ICategoryService categoryservice)
         {
             _service = service;
+            _categoryservice = categoryservice;
         }
         public IActionResult Index()
         {
@@ -23,7 +25,9 @@ namespace CustomerMNG.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            ProductViewModel model = new ProductViewModel();
+            model.CategorySelections = _categoryservice.GetAllCategory();
+            return View(model);
         }
 
         public IActionResult SaveNew(ProductViewModel product)
@@ -35,12 +39,14 @@ namespace CustomerMNG.Controllers
         public IActionResult View(Guid id)
         {
            var product = _service.GetProduct(id);
+            
             return View(product);
         }
 
         public IActionResult Edit(Guid id)
         {
             var product = _service.GetProduct(id);
+            product.CategorySelections = _categoryservice.GetAllCategory();
             return View(product);
         }
 

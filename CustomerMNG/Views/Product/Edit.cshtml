@@ -21,6 +21,12 @@
         <input asp-for="Quantity" class="form-control">
     </div>
     <div class="form-group">
+        <label>Category: </label>
+        <select asp-for="CategoryId" asp-items="Model.CategorySelections">
+            <option> Select Category</option>
+        </select>
+    </div>
+    <div class="form-group">
         <label asp-for="Price"></label>
         <input asp-for="Price" class="form-control">
     </div>
