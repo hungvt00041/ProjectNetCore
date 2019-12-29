@@ -4,14 +4,16 @@ using CustomerMNG.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CustomerMNG.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191229065631_CreateProductOrder")]
+    partial class CreateProductOrder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,29 +49,29 @@ namespace CustomerMNG.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("0b5ae8cb-c7fa-4b05-8865-e75235118de2"),
-                            CreatedDate = new DateTime(2019, 12, 29, 7, 2, 45, 584, DateTimeKind.Utc).AddTicks(6894),
+                            Id = new Guid("ade03b53-2ffd-4c95-84ce-996b6b375829"),
+                            CreatedDate = new DateTime(2019, 12, 29, 6, 56, 31, 39, DateTimeKind.Utc).AddTicks(6355),
                             Name = "Car",
                             UpDatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            Id = new Guid("94f86192-02bc-46a4-94d3-1bb9a28abbe5"),
-                            CreatedDate = new DateTime(2019, 12, 29, 7, 2, 45, 588, DateTimeKind.Utc).AddTicks(4725),
+                            Id = new Guid("1da22cd4-ae9f-45ae-b61e-7feec5238f7b"),
+                            CreatedDate = new DateTime(2019, 12, 29, 6, 56, 31, 41, DateTimeKind.Utc).AddTicks(5381),
                             Name = "Shoes",
                             UpDatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            Id = new Guid("a6a382ad-b561-414c-84f1-98b5fa008073"),
-                            CreatedDate = new DateTime(2019, 12, 29, 7, 2, 45, 588, DateTimeKind.Utc).AddTicks(5149),
+                            Id = new Guid("f5f4f9c6-6937-4f5a-bb9d-a3b663232353"),
+                            CreatedDate = new DateTime(2019, 12, 29, 6, 56, 31, 41, DateTimeKind.Utc).AddTicks(5597),
                             Name = "Bike",
                             UpDatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            Id = new Guid("8971160f-8509-4218-baa4-bbba38770b9d"),
-                            CreatedDate = new DateTime(2019, 12, 29, 7, 2, 45, 588, DateTimeKind.Utc).AddTicks(5906),
+                            Id = new Guid("93526d4e-29f1-49cf-9db7-dff524e62881"),
+                            CreatedDate = new DateTime(2019, 12, 29, 6, 56, 31, 41, DateTimeKind.Utc).AddTicks(5626),
                             Name = "Computer",
                             UpDatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
@@ -369,7 +371,7 @@ namespace CustomerMNG.Data.Migrations
                 {
                     b.HasOne("CustomerMNG.Models.Order", "Order")
                         .WithMany("ProductOrders")
-                        .HasForeignKey("OrderId")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

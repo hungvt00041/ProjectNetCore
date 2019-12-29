@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CustomerMNG.Models
 {
@@ -10,6 +11,8 @@ namespace CustomerMNG.Models
 
         public Guid CategoryId { get; set; }
         public Category Category { get; set; }
+
+        public List<ProductOrder> ProductOrders { get; set; }
 
     }
 }

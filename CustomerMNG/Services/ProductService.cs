@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using CustomerMNG.Models;
 using CustomerMNG.Repositories;
 using CustomerMNG.ViewModels;
@@ -11,14 +12,17 @@ namespace CustomerMNG.Services
     public class ProductService : IProductService
     {
         private readonly IProductRepository _repo;
-        public ProductService(IProductRepository repo)
+        private readonly IMapper _mapper;
+        public ProductService(IProductRepository repo, IMapper mapper)
         {
             _repo = repo;
+            _mapper = mapper;
         }
         public void AddProduct(ProductViewModel product)
         {
-            Product productModel = new Product { Id = product.Id, Name = product.Name, Quantity = product.Quantity, Price = product.Price, CategoryId = product.CategoryId };
-            _repo.AddProduct(productModel);
+            //Product productModel = new Product { Id = product.Id, Name = product.Name, Quantity = product.Quantity, Price = product.Price, CategoryId = product.CategoryId };
+            //_repo.AddProduct(productModel);
+            _repo.AddProduct(_mapper.Map<Product>(product));
         }
 
         public List<ProductViewModel> GetAllProduct()

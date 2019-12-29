@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using CustomerMNG.Repositories;
 using CustomerMNG.Services;
+using AutoMapper;
 
 namespace CustomerMNG
 {
@@ -36,11 +37,15 @@ namespace CustomerMNG
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.AddAutoMapper(typeof(Startup));
             //khai bao interface + implement
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<IOrderRepository, OrderRepository>();
+            services.AddTransient<IOrderService, OrderService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
