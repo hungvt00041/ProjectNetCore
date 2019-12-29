@@ -4,14 +4,16 @@ using CustomerMNG.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CustomerMNG.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191222090355_CreateDB")]
+    partial class CreateDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,69 +21,10 @@ namespace CustomerMNG.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("CustomerMNG.Models.Category", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpDatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Category");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("a492a623-c731-4961-9e6f-cd7e4cd7f7c3"),
-                            CreatedDate = new DateTime(2019, 12, 29, 3, 22, 46, 554, DateTimeKind.Utc).AddTicks(1948),
-                            Name = "Car",
-                            UpDatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = new Guid("83734e7c-dc2f-41ae-88bf-660bcd143cdc"),
-                            CreatedDate = new DateTime(2019, 12, 29, 3, 22, 46, 557, DateTimeKind.Utc).AddTicks(3492),
-                            Name = "Shoes",
-                            UpDatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = new Guid("ed99db2e-2058-41b4-99eb-dff3adfa9403"),
-                            CreatedDate = new DateTime(2019, 12, 29, 3, 22, 46, 557, DateTimeKind.Utc).AddTicks(3983),
-                            Name = "Bike",
-                            UpDatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = new Guid("83081a01-0ce2-4225-ba77-ef02fa702577"),
-                            CreatedDate = new DateTime(2019, 12, 29, 3, 22, 46, 557, DateTimeKind.Utc).AddTicks(4075),
-                            Name = "Computer",
-                            UpDatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
-                });
-
             modelBuilder.Entity("CustomerMNG.Models.Product", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CategoryId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedBy")
@@ -106,8 +49,6 @@ namespace CustomerMNG.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
                 });
@@ -310,15 +251,6 @@ namespace CustomerMNG.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("CustomerMNG.Models.Product", b =>
-                {
-                    b.HasOne("CustomerMNG.Models.Category", "Category")
-                        .WithMany("Products")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

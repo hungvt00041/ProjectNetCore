@@ -12,6 +12,8 @@ using CustomerMNG.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using CustomerMNG.Repositories;
+using CustomerMNG.Services;
 
 namespace CustomerMNG
 {
@@ -34,6 +36,11 @@ namespace CustomerMNG
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            //khai bao interface + implement
+            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<ICategoryService, CategoryService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,7 +70,7 @@ namespace CustomerMNG
                 endpoints.MapControllerRoute(
                     name: "default",
                     //pattern: "{controller=Home}/{action=Index}/{id?}");
-                    pattern: "{controller=CustomerMNG}/{action=Index}/{id?}");
+                    pattern: "{controller=Product}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

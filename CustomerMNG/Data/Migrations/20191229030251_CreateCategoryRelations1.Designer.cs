@@ -4,14 +4,16 @@ using CustomerMNG.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CustomerMNG.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191229030251_CreateCategoryRelations1")]
+    partial class CreateCategoryRelations1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,30 +49,23 @@ namespace CustomerMNG.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a492a623-c731-4961-9e6f-cd7e4cd7f7c3"),
-                            CreatedDate = new DateTime(2019, 12, 29, 3, 22, 46, 554, DateTimeKind.Utc).AddTicks(1948),
+                            Id = new Guid("b8c8cdf8-a9c4-49e6-b59d-d2b03901c492"),
+                            CreatedDate = new DateTime(2019, 12, 29, 3, 2, 50, 772, DateTimeKind.Utc).AddTicks(9832),
                             Name = "Car",
                             UpDatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            Id = new Guid("83734e7c-dc2f-41ae-88bf-660bcd143cdc"),
-                            CreatedDate = new DateTime(2019, 12, 29, 3, 22, 46, 557, DateTimeKind.Utc).AddTicks(3492),
+                            Id = new Guid("02200c33-feb5-4002-81dc-20fa2c6e92c5"),
+                            CreatedDate = new DateTime(2019, 12, 29, 3, 2, 50, 774, DateTimeKind.Utc).AddTicks(8978),
                             Name = "Shoes",
                             UpDatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            Id = new Guid("ed99db2e-2058-41b4-99eb-dff3adfa9403"),
-                            CreatedDate = new DateTime(2019, 12, 29, 3, 22, 46, 557, DateTimeKind.Utc).AddTicks(3983),
+                            Id = new Guid("a99bd2a9-5857-4ce5-b180-94c7bea2cd81"),
+                            CreatedDate = new DateTime(2019, 12, 29, 3, 2, 50, 774, DateTimeKind.Utc).AddTicks(9195),
                             Name = "Bike",
-                            UpDatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = new Guid("83081a01-0ce2-4225-ba77-ef02fa702577"),
-                            CreatedDate = new DateTime(2019, 12, 29, 3, 22, 46, 557, DateTimeKind.Utc).AddTicks(4075),
-                            Name = "Computer",
                             UpDatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
